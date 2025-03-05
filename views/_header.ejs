@@ -1,0 +1,72 @@
+<!-- Updated _header.ejs -->
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img
+        src="/images/logo.png"
+        alt="Employee Review Logo"
+        width="50"
+        height="50"
+        class="me-2"
+      />
+
+      <span class="fw-bold text-primary">Employee Review System</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <% if(locals.user) { %>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/"
+            ><i class="fa-solid fa-house me-1"></i> Home</a
+          >
+        </li>
+        <% if(locals.user.role === 'admin') { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/add-employee"
+            ><i class="fa-solid fa-user-plus me-1"></i> Add Employee</a
+          >
+        </li>
+        <% } %>
+      </ul>
+      <div class="d-flex align-items-center">
+        <span class="btn btn-outline-primary me-2"
+          ><i class="fa-solid fa-user"></i> <%= user.username %></span
+        >
+        <a class="btn btn-danger" href="/sign-out"
+          ><i class="fa-solid fa-sign-out-alt"></i> Sign Out</a
+        >
+      </div>
+      <% } %>
+    </div>
+  </div>
+</nav>
+
+<!-- Updated Employe Cards (admin_dashboard.ejs) -->
+
+<!-- Updated Login Form (user_sign_in.ejs) -->
+
+<!-- Add some smooth animations and spacing -->
+<style>
+  .btn {
+    transition: all 0.3s ease-in-out;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  .card {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .card:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+</style>
