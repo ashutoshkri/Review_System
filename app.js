@@ -32,15 +32,15 @@ app.use(express.static("public"));
 // ✅ Mongo Store for Session
 app.use(
   session({
-    name: "Employee review system",
-    secret: process.env.SESSION_SECRET_KEY || "abcd",
+    name: "ERS_Session",
+    secret: process.env.SESSION_SECRET || "abcd", // ✅ Fix applied
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 1000 * 60 * 100 * 24,
+      maxAge: 1000 * 60 * 100 * 100, // 1 day
     },
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI, // ✅ Now using `MONGO_URI`
+      mongoUrl: process.env.MONGO_URI,
       autoRemove: "disabled",
     }),
   })
